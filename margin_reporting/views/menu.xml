@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <menuitem id="menu_margin_report_root"
+              sequence="100"
+              name="Margin Report"
+              />
+      <menuitem id="menu_margin_report_model" 
+        name="Margin Reporting" 
+        sequence="10"/>
+
+    <menuitem id="menu_margin_report"
+        name="Margin Report"
+        parent="menu_margin_report_model"
+        action="action_margin_report"
+        sequence="1"/>
+</odoo>

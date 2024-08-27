@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_product_margin_report_tree" model="ir.ui.view">
+        <field name="name">product_margin.report.tree</field>
+        <field name="model">product_margin.report</field> 
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_name"/>
+                <field name="supplier_id"/>
+                <field name="quantity_sold"/>
+                <field name="availability"/>
+                <field name="currency_id" optional="hide"/>
+                <field name="sale_price" widget="monetary"/>
+                <field name="cost_price" widget="monetary"/>
+                <field name="margin" widget="percentage"/>
+                <field name="priority" widget="priority" class="mr-3"/>
+                <field name="profit" widget="monetary"/>
+                <field name="revenue" widget="monetary"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="view_margin_sales_form" model="ir.ui.view">
+        <field name="name">product_margin.report.form</field>
+        <field name="model">product_margin.report</field> 
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                <button name="button_in_progress" class="oe_highlight" invisible="state != 'purchase'" string="On Purchase" type="object"/>
+                <field name="state" widget="statusbar" statusbar_visible="purchase,delivery,late"/>
+                </header>
+            <sheet>
+            <group>
+                <group>
+                    <field name="product_name"/>
+                    <field name='date_created' string="Date Created" widget="date"/>
+                    <field name="supplier_id"/>
+                    <field name="availability"/>
+                    <field name="quantity_sold"/>
+                    <field name="currency_id" optional="hide"/>
+                </group>
+                <group>
+                    <field name="sale_price" widget="monetary"/>
+                    <field name="cost_price" widget="monetary"/>
+                </group>
+            </group>
+
+            <notebook>
+            <page string="Notes">
+                <field name='description' widget="text"/>
+            </page>
+            <page string='Image'>
+                <field name="image" widget="image"/>
+            </page>
+            </notebook>
+
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_margin_report" model="ir.actions.act_window">
+        <field name="name">Margin Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product_margin.report</field>
+        <field name="view_mode">tree,form,graph,kanban</field>
+        <field name="context">{'search_default_availability':1}</field>
+        <field name="view_id" ref="view_product_margin_report_tree"/>
+    </record>
+   
+    <record id="view_order_product_search" model="ir.ui.view">
+        <field name="name">product_margin.report.search</field>
+        <field name="model">product_margin.report</field>
+        <field name="arch" type="xml">
+            <search string="Margin Analysis">
+                <group expand="1" string="Group By">
+                    <filter string="Margin Priority" name="priority" context="{'group_by':'priority'}"/>
+                    <filter string="Availability" name="availability" context="{'group_by':'availability'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
