@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_product_margin_report,access_product_margin_report,model_product_margin_report,base.group_user,1,1,1,1
+access_product_margin_report,access_product_margin_report,margin_reporting.model_product_margin_report,base.group_user,1,1,1,1
+margin_reporting.access_margin_line,access_margin_line,margin_reporting.model_margin_line,base.group_user,1,1,1,1
+margin_reporting.access_margin_tag,access_margin_tag,margin_reporting.model_margin_tag,base.group_user,1,1,1,1
