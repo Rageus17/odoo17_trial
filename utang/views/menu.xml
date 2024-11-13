@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <menuitem id="menu_utang_report_root"
+              sequence="100"
+              name="Utang Report"
+              />
+      <menuitem id="menu_utang_report_model" 
+        name="Utang Reporting" 
+        sequence="10"/>
+
+    <menuitem id="menu_utang_report"
+        name="Utang Report"
+        parent="menu_utang_report_model"
+        action="action_utang_report"
+        sequence="1"/>
+</odoo>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <record id="view_utang_report_tree" model="ir.ui.view">
+        <field name="name">utang.report.tree</field>
+        <field name="model">utang.report</field> 
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="status_bayar"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="view_utang_form" model="ir.ui.view">
+        <field name="name">utang.report.form</field>
+        <field name="model">utang.report</field> 
+        <field name="arch" type="xml">
+            <form>
+               
+            <sheet>
+                
+            <group>
+                <group>
+                    <field name="name"/>
+                </group>
+            </group>
+
+            <notebook>
+            <page string="Report Lines">
+                <field name="line_ids">
+                    <tree editable="bottom">
+                        <field name="date"/>
+                        <field name="utang"/>
+                        <field name="bayar"/>
+                       
+                    </tree>
+                </field>
+            </page>
+            </notebook>
+            <group class="oe_subtotal_footer">
+                    <field name="total_bayar" sum="bayar" widget="monetary"/>
+                    <field name="total_utang" sum="utang"/>
+                    <field name="balance" widget="monetary"/>
+                </group>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_utang_report" model="ir.actions.act_window">
+        <field name="name">Utang Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">utang.report</field>
+        <field name="view_mode">tree,form,graph,kanban</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_utang_report_tree"/>
+    </record>
+   
+    <record id="view_nama_utang_search" model="ir.ui.view">
+        <field name="name">utang.report.search</field>
+        <field name="model">utang.report</field>
+        <field name="arch" type="xml">
+            <search string="Utang Analysis">
+                <field name="name" string="Product Name" filter_domain="[('name', 'ilike', self)]"/>
+                
+            </search>
+        </field>
+        
+    </record>
+
+</odoo>
