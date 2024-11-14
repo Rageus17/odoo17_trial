@@ -1,0 +1,11 @@
+<odoo>
+    <template id="assets_backend" name="Backend assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <style>
+                .o_field_widget.o_input.o_required {
+                    background-color: #d4f8d4;  /* hijau muda */
+                }
+            </style>
+        </xpath>
+    </template>
+</odoo>

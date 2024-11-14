@@ -26,17 +26,20 @@
             </group>
 
             <notebook>
-            <page string="Report Lines">
-                <field name="line_ids">
-                    <tree editable="bottom">
-                        <field name="date"/>
-                        <field name="utang"/>
-                        <field name="bayar"/>
-                       
-                    </tree>
-                </field>
-            </page>
+                <page string="Report Lines">
+                    <field name="line_ids">
+                        <tree editable="bottom">
+                            <field name="date"/>
+                            <field name="utang"/>
+                            <field name="bayar" style = "color: green"
+                                attrs="{'style': [('utang', '==', 0), ('bayar', '!=', 0)]}">
+                            </field>
+                            <field name="keterangan"/>
+                        </tree>
+                    </field>
+                </page>
             </notebook>
+
             <group class="oe_subtotal_footer">
                     <field name="total_bayar" sum="bayar" widget="monetary"/>
                     <field name="total_utang" sum="utang"/>

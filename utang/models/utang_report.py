@@ -46,7 +46,8 @@ class UtangReportLines(models.Model):
     currency_id = fields.Many2one('res.currency', string="Currency")
     date = fields.Datetime(string="Date",required=True,default=fields.Datetime.now)
     utang = fields.Float(string='Hutang')
-    bayar = fields.Float(string="Bayar")   
+    bayar = fields.Float(string="Bayar")  
+    keterangan = fields.Char(string="Description") 
     # @api.depends("sale_price","cost_price")
     # def _compute_profit(self):
     #     for record in self:
